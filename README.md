@@ -17,6 +17,10 @@ This repo contains selected, working SQL Server stored procedures from a larger 
 | [`sql/FA_YearEnd.sql`](./sql/FA_YearEnd.sql) | Year-end close: rolls forward Asset/Liability balances, nets Income/Expenditure into Retained Earnings, and opens the new fiscal year |
 | [`sql/Fn_GetTrn.sql`](./sql/Fn_GetTrn.sql) | Race-condition-safe transaction number generator, scoped per business + per screen |
 | [`sql/Fn_InventoryCosting.sql`](./sql/Fn_InventoryCosting.sql) | Inventory issue costing engine supporting **FIFO**, **LIFO**, and **Weighted Average** — consumes open receipt lots and computes issue cost dynamically |
+| [`docs/MENU_AND_SCREEN_ARCHITECTURE.md`](./docs/MENU_AND_SCREEN_ARCHITECTURE.md) | How the menu tree, screen registry, global search, favourites, and report-rendering mechanism all work as pure configuration |
+| [`docs/AUDIT_TRAIL.md`](./docs/AUDIT_TRAIL.md) | The three-tier (Basic/Moderate/Advance) configurable audit logging system |
+| [`docs/ADMIN_IT_SUPPORT_PANEL.md`](./docs/ADMIN_IT_SUPPORT_PANEL.md) | The separate IT/support admin panel — query console, backup, business cloning/reset, server monitoring |
+| [`docs/SO14_DIRECT_INVOICE_SPEC.md`](./docs/SO14_DIRECT_INVOICE_SPEC.md) | A complete, real screen specification — header fields, item-detail grid, and full button-level business logic for a walk-up sales invoice screen |
 
 ## Design principles behind these procedures
 
@@ -28,4 +32,4 @@ This repo contains selected, working SQL Server stored procedures from a larger 
 
 ## Note
 
-This is a curated excerpt, not the full blueprint. Screen designs, complete database schema, and the remaining ~30 stored procedures (purchase/sales GL interfaces, batch processing, inventory adjustments, etc.) are part of the original working document and aren't published here.
+This covers the core financial engine, the configuration-driven menu/screen/audit architecture, and one fully-documented representative screen. It's still a curated excerpt, not the full blueprint — the complete database schema and the remaining ~90 other screen specifications (purchase orders, GRNs, sales returns, inventory adjustments, and more) stay in the original working document. One category of content is deliberately excluded regardless: the literal implementation of tenant-wide data reset/clone tooling in the admin panel — see [`docs/ADMIN_IT_SUPPORT_PANEL.md`](./docs/ADMIN_IT_SUPPORT_PANEL.md) for why.
